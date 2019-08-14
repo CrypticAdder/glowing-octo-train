@@ -1,5 +1,17 @@
-﻿{%extends 'layout.html'%}
-{%block content%}
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>DB Connected</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/app.css') }}">
+
+</head>
+<body>
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -15,7 +27,6 @@
                 <li class="nav-item"><a href="/add_user" class="nav-link">Add New</a></li>
                 <li class="nav-item"><a href="/users" class="nav-link">Users</a></li>
                 <li class="nav-item"><a href="/profiles" class="nav-link">Profiles</a></li>
-                <li class="nav-item"><a href="/workshops" class="nav-link">Workshops</a></li>
                 {% endif %}
                 {% if not session_user_name %}
                 <li class="nav-item">
@@ -37,7 +48,8 @@
     </nav>
     <div class="container">
         {% if not session_user_name %}
-        <h2 class="font-weight-light text-center text-lg-left mt-4 mb-0">Welcome to the workshop Managers Python Application</h2>
+        <h2 class="font-weight-light text-center text-lg-left mt-4 mb-0">Welcome to the School Manager Python Application</h2>
         {% endif %}
     </div>
-{%endblock%}
+</body>
+</html>

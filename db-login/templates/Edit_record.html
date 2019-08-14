@@ -1,16 +1,6 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/app.css') }}">
-</head>
-<body>
+﻿{%extends 'layout.html'%}
+
+{%block content%}
     <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -34,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label for="familyname">Family Name:</label>
-                <input type="text" class="form-control" id="familyname" value="{{data["FamilyName"]}}" name="familyname" required>
+                <input type="text" class="form-control" id="familyname" value="{{data["LastName"]}}" name="familyname" required>
                 <div class="valid-feedback">Valid.</div>
                 <div class="invalid-feedback">Please fill out family name field.</div>
             </div>
@@ -50,13 +40,6 @@
                 <div class="valid-feedback">Valid.</div>
                 <div class="invalid-feedback">Please fill out password field.</div>
             </div>
-            <div class="form-group">
-                <label for="password2">Confirm Password:</label>
-                <input type="password" class="form-control" id="password2" value="" name="password2" required>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback">Please check Password mismatch.</div>
-            </div>
-
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
@@ -82,6 +65,4 @@
         })();
     </script>
 
-</body>
-</html>
-
+{%endblock%}

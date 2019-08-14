@@ -34,6 +34,9 @@
     <Content Include="templates\delete_record.html" />
     <Content Include="templates\Edit_record.html" />
     <Content Include="templates\Index.html" />
+    <Content Include="templates\issue.html" />
+    <Content Include="templates\workshop.html" />
+    <Content Include="templates\layout.html" />
     <Content Include="templates\Login.html" />
     <Content Include="templates\Update.html" />
     <Content Include="templates\Users.html" />
