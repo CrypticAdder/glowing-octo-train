@@ -75,7 +75,7 @@ def home():
 	return render_template("Index.html", results=data)
 
 @app.route('/workshop')
-def laptops():
+def workshop():
 	if  session.get('logged_in'):
 		username_session=escape(session['username']).capitalize()
 		connection=create_connection()
@@ -83,7 +83,7 @@ def laptops():
 		try:
 			with connection.cursor() as cursor:
 				print('I Run2')
-				select_sql ="SELECT tbllaptops.LaptopID AS LaptopID, tbllaptops.DatePurchased AS DatePurchased, tbllaptoptypes.LaptopName as LaptopName, tbllaptoptypes.Manufacturer as Manufacturer FROM tbllaptops LEFT JOIN tbllaptoptypes ON tbllaptops.LaptopTypeID=tbllaptoptypes.LaptopTypeID"
+				select_sql ="SELECT tblworkshop.RoleID AS WorkshopID, tblworkshop.DatePurchased AS DatePurchased, tblworkshopasgn.Name as LaptopName, tbllaptoptypes.Manufacturer as Manufacturer FROM tbllaptops LEFT JOIN tbllaptoptypes ON tbllaptops.LaptopTypeID=tbllaptoptypes.LaptopTypeID"
 				print('I Run2.5')
 				cursor.execute(select_sql)
 				print('I Run3')
@@ -93,7 +93,7 @@ def laptops():
 		finally:
 			print('I Run5')
 			connection.close()
-			return render_template('laptops.html', results=data, session_user_name=username_session)
+			return render_template('Index.html', results=data, session_user_name=username_session)
 	username_session=''
 	return render_template('index.html')
 
@@ -198,7 +198,7 @@ def login():
         with connection.cursor() as cursor:
          if request.method == 'POST':
             username_form  = request.form['username']
-            select_sql = "SELECT COUNT(1) FROM tblusers WHERE UserName = %s"
+            select_sql = "SELECT COUNT(1) FROM users WHERE UserName = %s"
             val =(username_form)
             cursor.execute(select_sql,val)
             #data = cursor.fetchall()
@@ -207,7 +207,7 @@ def login():
                 raise ServerError('Invalid username')
 
             password_form  = request.form['password']
-            select_sql = "SELECT Password from tblusers WHERE UserName = %s"
+            select_sql = "SELECT Password from users WHERE UserName = %s"
             val=(username_form)
             cursor.execute(select_sql,val)
             data = list(cursor.fetchall())
@@ -309,14 +309,14 @@ def issue():
 		print('Hello 2')
 		form = request.form
 		student = form['users']
-		laptop=form['laptops']
+		workshop=form['workshop']
 		date = datetime.datetime.now()
 		print('Hello 2.3')
 		try:
 			print('Hello 2.6')
 			with connection.cursor() as cursor:
 				print('Hello 3')
-				sql = "INSERT INTO tbllaptopissues (LaptopID, UserID, DateIssued) VALUES (%s,%s,%s);"
+				sql = "INSERT INTO tblworkshop (WorkshopID, UserID) VALUES (%s,%s,%s);"
 				vals=(laptop,student,date)
 				print('Hello 4')
 				print(vals)
@@ -328,7 +328,7 @@ def issue():
 		finally:
 			connection.close()
 			print('Hello 9')
-			return redirect(url_for('laptops'))
+			return redirect(url_for('workshops'))
 	try:
 		print('Hello 5.5')
 		with connection.cursor() as cursor:
@@ -337,15 +337,15 @@ def issue():
 			users = cursor.fetchall()
 			users = list(users)
 			print('Hello 6')
-			sql = "SELECT * FROM tbllaptops;"
+			sql = "SELECT * FROM tblworkshop;"
 			cursor.execute(sql)
-			laptops = cursor.fetchall()
-			laptops = list(laptops)
+			workshop = cursor.fetchall()
+			workshop = list(workshop)
 	finally:
 		connection.close
 		print('Hello 7')
 	print('Hello 8')
-	return render_template('issue.html',users=users, laptops=laptops)
+	return render_template('issue.html',users=users, workshop=workshop)
 
 
 if __name__ == '__main__':
