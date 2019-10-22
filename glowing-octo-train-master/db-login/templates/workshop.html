@@ -5,7 +5,7 @@
         <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">School Manager</a>
+                    <a class="navbar-brand" href="#">workshop Manager</a>
                     {% if session_user_name %}
                     <a class="navbar-brand" href="#">Hello {{ session_user_name }}</a>
                     {% endif %}
@@ -26,12 +26,11 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                            Manage Laptops
+                            Manage Workshops
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="/workshops">Workshops</a>
-                            <a class="dropdown-item" href="/issue_issues">Enrolled Workshop</a>
-                            <a class="dropdown-item" href="/issue">Something about workshop</a>
+                            <a class="dropdown-item" href="/edit_workshop">Edit Workshop</a>
                         </div>
 
                     </li>
@@ -47,11 +46,11 @@
         </nav>
 
         {% if not session_user_name %}
-        <h2 class="font-weight-light text-center text-lg-left mt-4 mb-0">Welcome to the School Manager Python Application</h2>
+        <h2 class="font-weight-light text-center text-lg-left mt-4 mb-0">Welcome to the Workshop Manager Python Application</h2>
         {% endif %}
     </div>
     <div class="container">
-        <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">All Laptops</h1>
+        <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">All Workshops</h1>
 
         <table class="table table-bordered">
             <thead>
@@ -60,7 +59,7 @@
                     <th>Workshop Name</th>
                     <th>Manufacturer</th>
                     <th>DatePurchased</th>
-                    <th>Laptop</th>
+                    <th>Workshop</th>
                     <th>Photo</th>
                     <th>Actions</th>
                 </tr>
@@ -73,7 +72,7 @@
                     <td>{{ row.Manufacturer}}</td>
                     <td>{{ row.DatePurchased }}</td>
                     <td>{{ row.WorkshopID }}</td>
-                    <td><a href="/edit_laptop?id={{row.LaptopId}}" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-edit"></span>Edit</a> <a href="/delete_laptop?id={{row.LaptopId}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span>Del</a></td>
+                    <td><a href="/edit_workshop?id={{row.WorkshopID}}" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-edit"></span>Edit</a> <a href="/delete_workshop?id={{row.WorkshopID}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span>Del</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

@@ -240,27 +240,25 @@ def update_user():
 			print(f'email is {email}')
 			password = form_values.get("password")
 			password = hashlib.md5(password.encode()).hexdigest()
-			user_id = form_values.get('ID')
+			user_id = request.args.get('id')
+			print(f'id is {user_id}')
 			try:
 				with connection.cursor() as cursor:
 					# Create a new record
 					sql = "UPDATE `users` SET FirstName=%s,FamilyName=%s,Email=%s,Password=%s WHERE ID=%s"
-					print(1)
-					val=(first_name,family_name,email,password, user_id)
-					print(2)
+					print('1')
+					val=(first_name,family_name,email,password,user_id)
+					print('2')
 					cursor.execute(sql,(val))
-					print(3)
+					print('3')
 					data = cursor.fetchall()
-					print(4)
+					print('4')
 					data=list(data)
 					#save values in dbase
-					print(5)
 				connection.commit()
 				cursor.close()
-				print(6)
 			finally:
 				connection.close()
-				print(7)
 			return redirect(url_for('users'))
 	try:
 		with connection.cursor() as cursor:

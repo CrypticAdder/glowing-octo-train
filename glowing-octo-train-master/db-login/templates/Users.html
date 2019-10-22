@@ -28,7 +28,6 @@
                 <tr>
                     <th>First Name</th>
                     <th>Family Name</th>
-                    <th>Date of Birth</th>
                     <th>Email</th>
                     <th>Photo</th>
                     <th>Actions</th>
@@ -39,7 +38,6 @@
                 <tr>
                     <td>{{ row.FirstName}}</td>
                     <td>{{ row.FamilyName }}</td>
-                    <td>{{ row.DateOfBirth }}</td>
                     <td>{{ row.Email }}</td>
                     <td>{{ row.Photo }}</td>
                     <td><a href="/edit_user?id={{row.ID}}" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-edit"></span>Edit</a> <a href="/delete_user?id={{row.ID}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span>Del</a></td>
