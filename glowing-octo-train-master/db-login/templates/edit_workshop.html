@@ -4,7 +4,7 @@
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Workshop Manager</a>
+            <a class="navbar-brand" href="#">Edit Workshops</a>
         </div>
         <ul class="nav navbar-nav">
             <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
@@ -12,7 +12,7 @@
     </div>
 </nav>
 <div class="container">
-    <h2>Edit User</h2><hr />
+    <h2>Edit Workshops</h2><hr />
     <p>All Fields are required</p>
     <form action="/edit_user" method="post" oninput='password2.setCustomValidity(password2.value != password.value ? "Passwords do not match." : "")' class="needs-validation" novalidate>
         <input type="hidden" name="ID" value="{{data["ID"]}}" />

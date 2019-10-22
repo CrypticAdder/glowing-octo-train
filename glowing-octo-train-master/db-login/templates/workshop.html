@@ -25,14 +25,6 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                            Manage Workshops
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/workshops">Workshops</a>
-                            <a class="dropdown-item" href="/edit_workshop">Edit Workshop</a>
-                        </div>
-
                     </li>
                     {% endif %}
                     {% if not session_user_name %}
@@ -40,7 +32,7 @@
                         <a href="{{ url_for('login') }}" class="nav-link">Login</a>
                     </li>
                     {% endif %}
-                    <!-- Dropdown -->
+                    <a href="add_workshop.html" class="btn btn-info" role="button">Add Workshops</a>
                 </ul>
             </div>
         </nav>
@@ -57,10 +49,10 @@
                 <tr>
                     <th>WorkshopID</th>
                     <th>Workshop Name</th>
-                    <th>Manufacturer</th>
-                    <th>DatePurchased</th>
+                    <th>Workshop Room</th>
+                    <th>Date Created</th>
                     <th>Workshop</th>
-                    <th>Photo</th>
+                    <th>Students</th>
                     <th>Actions</th>
                 </tr>
             </thead>

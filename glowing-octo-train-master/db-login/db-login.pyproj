@@ -31,6 +31,7 @@
   <ItemGroup>
     <Content Include="requirements.txt" />
     <Content Include="templates\Add_user.html" />
+    <Content Include="templates\add_workshop.html" />
     <Content Include="templates\delete_workshop.html" />
     <Content Include="templates\edit_record.html" />
     <Content Include="templates\Index.html" />
