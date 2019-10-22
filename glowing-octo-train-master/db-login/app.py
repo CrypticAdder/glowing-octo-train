@@ -74,7 +74,7 @@ def home():
 #			connection.close()
 	return render_template("Index.html", results=data)
 
-@app.route('/workshop')
+@app.route('/workshops')
 def workshop():
 	if  session.get('logged_in'):
 		username_session=escape(session['username']).capitalize()
@@ -83,7 +83,7 @@ def workshop():
 		try:
 			with connection.cursor() as cursor:
 				print('I Run2')
-				select_sql ="SELECT tblworkshop.RoleID AS WorkshopID, tblworkshop.DatePurchased AS DatePurchased, tblworkshopasgn.Name as LaptopName, tbllaptoptypes.Manufacturer as Manufacturer FROM tbllaptops LEFT JOIN tbllaptoptypes ON tbllaptops.LaptopTypeID=tbllaptoptypes.LaptopTypeID"
+				select_sql ="SELECT * FROM workshop w"
 				print('I Run2.5')
 				cursor.execute(select_sql)
 				print('I Run3')
@@ -93,7 +93,7 @@ def workshop():
 		finally:
 			print('I Run5')
 			connection.close()
-			return render_template('Index.html', results=data, session_user_name=username_session)
+			return render_template('workshop.html', results=data, session_user_name=username_session)
 	username_session=''
 	return render_template('index.html')
 
@@ -310,15 +310,7 @@ def logout():
 	session['logged_in']=False
 	return redirect(url_for("home"))
 
-@app.route('/workshops')
-def workshops():
-	if not session.get('logged_in'):
-		return redirect(url_for('login'))
-	else:
-		username_session=escape(session['username']).capitalize()
-		display_all_records("admin")
-		print(data)
-	return render_template("workshop.html",results = data, session_user_name=username_session)
+
 
 
 @app.route('/issue', methods = ['GET', "POST"])

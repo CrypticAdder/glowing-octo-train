@@ -67,12 +67,13 @@
             <tbody>
                 {% for row in results %}
                 <tr>
-                    <td>{{ row.WorkshopID}}</td>
-                    <td>{{ row.WorkshopName}}</td>
-                    <td>{{ row.Manufacturer}}</td>
-                    <td>{{ row.DatePurchased }}</td>
-                    <td>{{ row.WorkshopID }}</td>
-                    <td><a href="/edit_workshop?id={{row.WorkshopID}}" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-edit"></span>Edit</a> <a href="/delete_workshop?id={{row.WorkshopID}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span>Del</a></td>
+                    <td>{{row.workshopId}}</td>
+                    <td>{{row.workshopTitle}}</td>
+                    <td>{{row.workshopRoom}}</td>
+                    <td>{{row.workshopDate}}</td>
+                    <td>{{row.workshopTeacher}}</td>
+                    <td>{{row.workshopMaxStudents}}</td>
+                    <td><a href="/edit_workshop?id={{row.workshopId}}" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-edit"></span>Edit</a> <a href="/delete_workshop?id={{row.workshopId}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span>Del</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
